@@ -1,4 +1,4 @@
-﻿Shader "ShaderBook/HalfLambert-Phong-Vertex"
+﻿Shader "ShaderBook/LightingBase/HalfLambert-Phong-Vertex"
 {
     Properties
     {

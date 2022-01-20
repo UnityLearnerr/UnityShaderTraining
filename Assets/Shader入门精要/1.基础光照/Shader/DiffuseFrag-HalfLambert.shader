@@ -1,4 +1,4 @@
-﻿Shader "ShaderBook/DiffuseFrag-HalfLambert"
+﻿Shader "ShaderBook/LightingBase/DiffuseFrag-HalfLambert"
 {
     Properties
     {

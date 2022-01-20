@@ -1,4 +1,4 @@
-﻿Shader "ShaderBook/HalfLambert-Phong-Frag"
+﻿Shader "ShaderBook/LightingBase/HalfLambert-Phong-Frag"
 {
     Properties
     {

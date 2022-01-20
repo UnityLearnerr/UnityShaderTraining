@@ -1,4 +1,4 @@
-﻿Shader "ShaderBook/DiffuseVertex-HalfLambert"
+﻿Shader "ShaderBook/LightingBase/DiffuseVertex-HalfLambert"
 {
     Properties
     {

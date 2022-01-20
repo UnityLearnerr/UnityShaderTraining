@@ -1,4 +1,4 @@
-﻿Shader "ShaderBook/HalfLambert-BlinnPhong-Vertex"
+﻿Shader "ShaderBook/LightingBase/HalfLambert-BlinnPhong-Vertex"
 {
     Properties
     {

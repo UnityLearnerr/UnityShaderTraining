@@ -1,4 +1,4 @@
-﻿Shader "ShaderBook/NormalTex"
+﻿Shader "ShaderBook/TextureBase/NormalTex"
 {
     Properties
     {
