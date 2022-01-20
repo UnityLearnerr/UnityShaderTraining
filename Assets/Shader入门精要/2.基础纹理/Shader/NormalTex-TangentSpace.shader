@@ -1,4 +1,4 @@
-﻿Shader "ShaderBook/TextureBase/NormalTex"
+﻿Shader "ShaderBook/TextureBase/NormalTex-TangentSpace"
 {
     Properties
     {
@@ -62,7 +62,6 @@
 
             fixed4 frag (v2f i) : SV_Target
             {
-                
                 fixed4 packedNormal = tex2D(_BumpMap, i.uv.zw);
                 fixed3 unpackedNormal = UnpackNormal(packedNormal);
                 unpackedNormal.xy *= _BumpScale;
