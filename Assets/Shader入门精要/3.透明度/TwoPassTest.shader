@@ -1,4 +1,4 @@
-﻿Shader "Unlit/TwoPassTest"
+﻿Shader "ShaderBook/Transparent/TwoPassAlphaBlend"
 {
     Properties
     {

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TwoPassTest
+  m_Name: TwoPassAlphaBlend
   m_Shader: {fileID: 4800000, guid: 78aebb9113f1ba14aae9bb297317c32f, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
