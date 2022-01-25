@@ -1,4 +1,4 @@
-﻿Shader "ShaderBook/Transparent/AlphaTest"
+﻿Shader "ShaderBook/Transparent/AlphaTest-TwoSide"
 {
     Properties
     {
@@ -11,7 +11,7 @@
     {
         Tags { "RenderType"="TranparentCutout" "Quene" = "AlphaTest" }
         LOD 100
-
+        Cull Off
         Pass
         {   
             CGPROGRAM
@@ -58,6 +58,7 @@
                 fixed3 worldNormal = normalize(i.worldNormal);
                 fixed3 lightDir = normalize(i.lightDir);
                 fixed3 viewDir = normalize(i.viewDir);
+
                 fixed4 col = tex2D(_MainTex, i.uv);
                 float3 ambinet = UNITY_LIGHTMODEL_AMBIENT.rgb * col.rgb;
                 float3 diffuse = col.rgb * _LightColor0.rgb * saturate(dot(worldNormal, lightDir));
