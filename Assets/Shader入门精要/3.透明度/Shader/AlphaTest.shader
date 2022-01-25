@@ -1,4 +1,4 @@
-﻿Shader "ShaderBook/Tranparent/AlphaTest"
+﻿Shader "ShaderBook/Transparent/AlphaTest"
 {
     Properties
     {
