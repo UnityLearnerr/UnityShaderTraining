@@ -1,4 +1,4 @@
-﻿Shader "ShaderBook/ComplexLighting/ForwardRendering"
+﻿Shader "ShaderBook/ComplexLighting/ShadowCaster"
 {
     Properties
     {
@@ -137,6 +137,35 @@
             ENDCG
         }
 
+        Pass
+        {
+            Tags{"LightMode"="ShadowCaster"}
+            CGPROGRAM
+            #include "UnityCG.cginc"
+            #pragma vertex vert
+            #pragma fragment frag
+            #pragma multi_compile_shadowcaster
 
+            struct v2f
+            {
+                V2F_SHADOW_CASTER;
+            };
+
+            v2f vert(appdata_base v)
+            {
+                v2f o;
+                TRANSFER_SHADOW_CASTER_NORMALOFFSET(o);
+                return o;
+            }
+
+            fixed4 frag(v2f i):SV_Target
+            {
+                //SHADOW_CASTER_FRAGMENT(i);
+                //return fixed4(1,1,1,1);
+                return 023;
+            }
+
+            ENDCG
+        }
     }
 }
