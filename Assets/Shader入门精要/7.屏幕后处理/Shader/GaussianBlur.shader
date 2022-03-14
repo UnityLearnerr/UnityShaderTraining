@@ -1,8 +1,9 @@
-﻿Shader "Unlit/GaussianBlur"
+﻿Shader "ShaderBook/Post/GaussianBlur"
 {
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _BlurSize("BlurSize", Float) = 1
     }
     SubShader
     {
@@ -26,6 +27,7 @@
 
             sampler2D _MainTex;
             float4 _MainTex_TexelSize;
+            float _BlurSize;
             
 
             v2f vertVertical (appdata v)
@@ -33,10 +35,10 @@
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv[0] = v.uv;
-                o.uv[1] = v.uv + fixed2(_MainTex_TexelSize.y * 1, 0.0);
-                o.uv[2] = v.uv + fixed2(_MainTex_TexelSize.y * -1, 0.0);
-                o.uv[3] = v.uv + fixed2(_MainTex_TexelSize.y * 2, 0.0);
-                o.uv[4] = v.uv = fixed2(_MainTex_TexelSize.y * -2, 0.0);
+                o.uv[1] = v.uv + fixed2(_MainTex_TexelSize.y * 1, 0.0) * _BlurSize;
+                o.uv[2] = v.uv + fixed2(_MainTex_TexelSize.y * -1, 0.0) * _BlurSize;
+                o.uv[3] = v.uv + fixed2(_MainTex_TexelSize.y * 2, 0.0) * _BlurSize;
+                o.uv[4] = v.uv = fixed2(_MainTex_TexelSize.y * -2, 0.0) * _BlurSize;
                 return o;
             }
 
@@ -45,10 +47,10 @@
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv[0] = v.uv;
-                o.uv[1] = v.uv + fixed2(0.0, _MainTex_TexelSize.y * 1 );
-                o.uv[2] = v.uv + fixed2(0.0, _MainTex_TexelSize.y * -1);
-                o.uv[3] = v.uv + fixed2(0.0, _MainTex_TexelSize.y * 2);
-                o.uv[4] = v.uv = fixed2(0.0, _MainTex_TexelSize.y * -2);
+                o.uv[1] = v.uv + fixed2(0.0, _MainTex_TexelSize.y * 1) * _BlurSize;
+                o.uv[2] = v.uv + fixed2(0.0, _MainTex_TexelSize.y * -1) * _BlurSize;
+                o.uv[3] = v.uv + fixed2(0.0, _MainTex_TexelSize.y * 2) * _BlurSize;
+                o.uv[4] = v.uv = fixed2(0.0, _MainTex_TexelSize.y * -2) * _BlurSize;
                 return o;
             }
 
@@ -68,6 +70,7 @@
         ZTest Always Cull Off ZWrite Off
         Pass
         {   
+            NAME "GAUSSIAN_VERTICAL"
             CGPROGRAM
             #pragma vertex vertVertical
             #pragma fragment fragGaussian
@@ -76,6 +79,7 @@
 
         Pass
         {   
+            NAME "GAUSSIAN_HORIZONTAL"
             CGPROGRAM
             #pragma vertex vertHorizontal
             #pragma fragment fragGaussian
