@@ -38,12 +38,12 @@
             fixed4 frag_rgb (v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
-                return fixed4(col.rgb, _BlurAmount);
+                return fixed4(col.rgb, _BlurAmount); // _BlurAmount做为A通道的值进行透明度混合,但是不写入透明度
             }
 
             fixed4 frag_a(v2f i):SV_Target
             {
-                 fixed4 col = tex2D(_MainTex, i.uv);
+                 fixed4 col = tex2D(_MainTex, i.uv); // 将原始的透明度写入
                  return col;
             }
         ENDCG

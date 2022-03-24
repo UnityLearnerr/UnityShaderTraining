@@ -38,12 +38,12 @@ public class MotionBlur : PostProcessBase
         if (m_RenderTexture == null)
         {
             m_RenderTexture = RenderTexture.GetTemporary(source.width, source.height);
+            Graphics.Blit(source, m_RenderTexture);
         }
-        Graphics.Blit(source, m_RenderTexture);
-        m_RenderTexture.MarkRestoreExpected();
+        m_RenderTexture.MarkRestoreExpected(); // 下帧不销毁上帧RenderTexture的内容
         m_Mat.SetFloat("_BlurAmount", 1 - BlurAmount);
-        Graphics.Blit(source, m_RenderTexture, m_Mat);
-        Graphics.Blit(m_RenderTexture, destination, m_Mat);
+        Graphics.Blit(source, m_RenderTexture, m_Mat); // 上帧m_RenderTexture的内容没被覆盖,Rgb进行透明度混合,a按照原先值进行输出
+        Graphics.Blit(m_RenderTexture, destination);
     }
 
 }

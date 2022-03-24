@@ -38,12 +38,12 @@ public class GaussianBlur : PostProcessBase
         for (int i = 0, imax = m_Itorations; i < imax; i++) 
         {
             RenderTexture buffer1 = RenderTexture.GetTemporary(width, height);
-            Graphics.Blit(buffer0, buffer1, Mat, 0);
+            Graphics.Blit(buffer0, buffer1, Mat, 0); // 横向高斯核卷积计算
             RenderTexture.ReleaseTemporary(buffer0);
             buffer0 = buffer1;
 
             buffer1 = RenderTexture.GetTemporary(width, height);
-            Graphics.Blit(buffer0, buffer1, Mat, 1);
+            Graphics.Blit(buffer0, buffer1, Mat, 1); // 纵向高斯核卷积计算
             RenderTexture.ReleaseTemporary(buffer0);
             buffer0 = buffer1;
         }
