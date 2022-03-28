@@ -11,6 +11,10 @@
 
         Pass
         {
+            ZTest Off
+            Cull Off
+            ZTest Off
+
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -61,16 +65,16 @@
                 float4 preClipPosNoNoralize = mul(_PreWorld2Proj, curWorldPos);
                 float4 preClipPos = preClipPosNoNoralize / preClipPosNoNoralize.w;
                 
-                float2 velocity = (curWorldPos - preClipPos).xy / 2;
+                float2 velocity = (curClipPos - preClipPos).xy / 2;
                 float4 col = tex2D(_MainTex, i.uv.xy);
                 float2 uv = i.uv.xy + velocity * _BlurSize;
 
                 for (int it = 1;it < 3; it++, uv += velocity * _BlurSize)
                 {
-                    col += tex2D(_MainTex, i.uv.xy);
+                    col += tex2D(_MainTex, uv);
                 }
                 col /= 3;
-                return fixed4(velocity, 0, 1);
+                return fixed4(col.rgb, 1);
             }
             ENDCG
         }
