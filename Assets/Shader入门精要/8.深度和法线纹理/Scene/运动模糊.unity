@@ -197,7 +197,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568877094}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.76, y: 0.69, z: 0}
+  m_LocalPosition: {x: 1.63, y: 1.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 1019848893}
   - component: {fileID: 1019848896}
   - component: {fileID: 1019848897}
+  - component: {fileID: 1019848898}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -300,7 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shader: {fileID: 4800000, guid: c88f6b40e08ec4a48bbe9e6cc3cbd45e, type: 3}
-  m_BlurSize: 0.5
+  m_BlurSize: 10
 --- !u!114 &1019848897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,6 +319,20 @@ MonoBehaviour:
   endPoint: {x: 0, y: 0, z: 0}
   lookAt: {x: 0, y: 0, z: 0}
   pingpong: 1
+--- !u!114 &1019848898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019848892}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d020e3ce85ebf41dd8f2ee2bf42e1838, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  motionBlurShader: {fileID: 4800000, guid: 50099de3abb6f794a9ced7d90f6e236e, type: 3}
+  blurSize: 0.5
 --- !u!1 &1823381891
 GameObject:
   m_ObjectHideFlags: 0
