@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Scan
+  m_Shader: {fileID: 4800000, guid: 30e16280aa13a2a4aa9033cf21b5e889, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 6b1e70a108f261743b71ce1e630a555e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ScanTex:
+        m_Texture: {fileID: 2800000, guid: 3e1ba32ea4a1a96408ab3fb1fe0c4518, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InnerAlpha: 0
+    - _RimBase: 0.21
+    - _RimBias: 0.142
+    - _RimPower: 8.89
+    - _RimScale: 1.05
+    - _ScanIntensity: 1
+    - _TexPower: 1
+    - __dirty: 0
+    m_Colors:
+    - _Color0: {r: 0, g: 0.91764706, b: 1, a: 0.8235294}
+    - _InnerColor: {r: 0, g: 0.3490566, b: 0.32743365, a: 0}
+    - _RimColor: {r: 0.43867922, g: 1, b: 0.5450347, a: 0}
+    - _Speed: {r: 1.48, g: 0.8, b: 0, a: 0}
