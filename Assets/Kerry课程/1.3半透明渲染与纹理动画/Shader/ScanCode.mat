@@ -13,15 +13,27 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 6b1e70a108f261743b71ce1e630a555e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
+    - _ScanTex:
+        m_Texture: {fileID: 2800000, guid: 3e1ba32ea4a1a96408ab3fb1fe0c4518, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _RimBias: 0
+    - _RimInstensity: 5
+    - _RimPower: 2
+    - _RimScale: 1
+    - _TexPow: 5
+    m_Colors:
+    - _InnerColor: {r: 0, g: 0.07058824, b: 0.23529413, a: 1}
+    - _RimColor: {r: 0.11372549, g: 0.2, b: 0.78039217, a: 1}
+    - _ScanSpeed: {r: 0, g: 1, b: 0, a: 0}

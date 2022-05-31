@@ -11,6 +11,7 @@
         _RimBias("RimBias", Range(0, 1)) = 1
         _RimScale("RimScale", Range(0, 1)) = 1
         _ScanSpeed("ScanSpeed", Vector) = (0,0,0,0)
+        _TexPow("TexPow", Range(0, 10)) = 5
 
     }
     SubShader
@@ -26,7 +27,7 @@
 
         Pass
         {
-            Blend SrcAlpha OneMinusSrcAlpha
+            Blend SrcAlpha One
             ZWrite Off
             CGPROGRAM
             #pragma vertex vert
@@ -62,6 +63,7 @@
             float _RimScale;
             float _RimBias;
             float4 _ScanSpeed;
+            float _TexPow;
 
             v2f vert (appdata v)
             {
@@ -70,31 +72,29 @@
                 float3 worldPos = mul(unity_ObjectToWorld, v.vertex);
                 float3 rootPos = mul(unity_ObjectToWorld, float4(0, 0, 0, 1));
                 o.worldPos = worldPos - rootPos;
-                o.worldViewDir = UnityWorldSpaceViewDir(worldPos);
-                o.worldNormal = UnityObjectToWorldNormal(v.normal);
+                o.worldViewDir = normalize(UnityWorldSpaceViewDir(worldPos));
+                o.worldNormal = normalize(UnityObjectToWorldNormal(v.normal));
                 o.mainTexUV = TRANSFORM_TEX(v.uv, _MainTex);
                 return o;
             }
 
-            float CalRimAlpha(v2f i)
+            float CalFresnel(v2f i)
             {
                 float dotresult = clamp(dot(normalize(i.worldNormal), normalize(i.worldViewDir)), 0, 1);
                 float rimresult = (pow((1 - dotresult), _RimPower) + _RimBias) * _RimScale;
-                return clamp(rimresult, 0, 1);   
+                return rimresult;   
             }
 
             fixed4 frag (v2f i) : SV_Target
             {
-                float rimAlpha = CalRimAlpha(i);
+                float detailAlpha = pow(tex2D(_MainTex, i.mainTexUV).r, _TexPow);
+                float rimAlpha = clamp(CalFresnel(i) + detailAlpha, 0, 1);
                 fixed4 rimColor = lerp(_InnerColor, _RimColor * _RimInstensity, rimAlpha);
                 float3 pos = i.worldPos + _ScanSpeed * _Time.y;
                 float4 uv = float4(pos.x, pos.y, 0, 0);
                 fixed4 scanColor = tex2D(_ScanTex, uv);
-                float detailAlpha = tex2D(_MainTex, i.mainTexUV).r;
-
                 fixed3 finalColor = rimColor.rgb + scanColor.rgb;
-                fixed finalAlpha = rimAlpha + detailAlpha + scanColor.a;
-                
+                fixed finalAlpha = clamp(rimAlpha + scanColor.a, 0, 1);
                 return fixed4(finalColor, finalAlpha);
             }
             ENDCG
