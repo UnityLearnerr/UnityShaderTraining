@@ -19,9 +19,29 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _TexCube:
+    - _AOMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
+    - _AoMap:
+        m_Texture: {fileID: 2800000, guid: ba5576fff0827c540a1a0c11ad541c11, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CubeMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: 02f22fc859217744e88e11f0d9f65f8f, type: 3}
+        m_Scale: {x: 3, y: 3}
+        m_Offset: {x: 0, y: 0}
+    - _TexCube:
+        m_Texture: {fileID: 8900000, guid: 82c4156a11e59624fbb3691abc7e1673, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Expose: 1
+    - _NormalIntensity: 1
+    - _Rotate: 0
+    m_Colors:
+    - _Tint: {r: 1, g: 1, b: 1, a: 1}
