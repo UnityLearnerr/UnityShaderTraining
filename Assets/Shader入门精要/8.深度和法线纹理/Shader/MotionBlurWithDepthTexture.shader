@@ -1,4 +1,4 @@
-﻿Shader "Unlit/MotionBlurWithDepthTexture"
+Shader "Unlit/MotionBlurWithDepthTexture"
 {
     Properties
     {
@@ -40,8 +40,8 @@
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv.xy = uv
-                o.uv.zw = uv
+                o.uv.xy = v.uv;
+                o.uv.zw = v.uv;
                 #if UNITY_UV_STARTS_AT_TOP
                 if(_MainTex_Texel_Size.y < 0)
                 {
